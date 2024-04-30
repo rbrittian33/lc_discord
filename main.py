@@ -4,7 +4,7 @@ from itertools import cycle
 import asyncio
 import discord
 from discord.ext import commands, tasks
-
+from keep_alive import keep_alive
 # Set up the bot
 client = commands.Bot(command_prefix='!', intents=discord.Intents.all())
 
@@ -50,5 +50,6 @@ async def main():
 	async with client:
 		await load()
 		await client.start(os.getenv("DISCORD_TOKEN"))
-	
+		
+keep_alive() #Start web server
 asyncio.run(main())
